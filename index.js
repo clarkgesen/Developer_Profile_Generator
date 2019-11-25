@@ -4,6 +4,14 @@ const util = require("util");
 const axios = require('axios').default;
 const writeFileAsync = util.promisify(fs.writeFile);
 const generateHTML = require("./generateHTML");
+// const jsPDF = require("jspdf");
+
+// global.window = { document: { createElementNS: () => { return {} } } };
+// global.navigator = {};
+// global.btoa = () => { };
+
+
+
 
 
 function promptUser() {
@@ -21,7 +29,7 @@ function promptUser() {
   ]);
 }
 
-promptUser() 
+promptUser()
   .then(function (results) {
     // console.log(results.userName);
     // console.log(results.color);
@@ -30,7 +38,7 @@ promptUser()
     console.log(queryUrl);
     axios
       .get(queryUrl)
-      .then(function(res) {
+      .then(function (res) {
 
         // console.log(res.data);
         const profile = {
@@ -41,13 +49,24 @@ promptUser()
         // console.log(profile);
         // console.log(generateHTML(profile));
         console.log(profile);
-        const html = generateHTML(profile); 
-  
-        
+        const html = generateHTML(profile);
+
+        // generatePDF();
+
         return writeFileAsync("index.html", html);
+
+        
 
       })
   })
+
+  // function generatePDF(){
+  //   var doc = new jsPDF();
+
+  //   doc.fromHTML($('body').get(0), 20, 20, {'width': 500});
+
+  //     doc.save('Generated_Profile.pdf')
+  //   }
 
 // async function init() {
 //   try {

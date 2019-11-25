@@ -172,21 +172,37 @@ function generateHTML(data) {
           } 
          }
       </style>
-      <body>
-        <div class="jumbotron jumbotron-fluid">
-        <div class="container">
-          <img src=${data.avatar_url}>
-          <h1 class="display-4">${data.name}</h1>
-          <p class="lead">${data.location}.</p>
-          <h3>Example heading <span class="badge badge-secondary">Contact Me</span></h3>
-          <p>${data.url}</p>
-          <p>${data.followers}</p>
-          <p>${data.public_repos}</p>
-          <p>${data.following}</p>
+<body>
+  <div class="jumbotron jumbotron-fluid">
+    <div class="container photo-header">
+      <img src=${data.avatar_url} alt="Avatar">
+      <h1 class="display-4">${data.name}</h1>
+        <h3 class="lead">${data.location}</h3><br>
+        <br>
+        <a href="${data.html_url}">Github Profile</a>
+    </div>
+    </div>
+    <div class = "container">
+    <div class="row">
+    <div class="card col">
+      <p>Followers: ${data.followers}</p>
+    </div>
+    <div class="card col">
+      <p>Following: ${data.following}</p>
+    </div>
+    </div>
+    </div>
+    <div class="container">
+    <div class="row">
+    <div class="card col">
+      <p>Public Repositories: ${data.public_repos}</p>
+    </div>
+    </div>
+    </div>
+    
 
-        </div>
-      </div>
-      </body>`
+  </div>
+</body>`
 }
 
 module.exports = generateHTML;
